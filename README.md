@@ -21,3 +21,33 @@ Ensure you have Node.js installed on your system.
    ```bash
    git clone <repository-url>
    cd product-compare-app
+
+## Usage
+
+### Launch the App
+- Open the app in your browser after starting the development server.
+
+### Explore Products
+- A list of products will be displayed. Each product card shows the name, brand, price, and features.
+
+### Add Products to Compare
+- Click the "Add to Compare" button on a product card to add it to the comparison list.
+- A maximum of three products can be compared at a time. An error toast will appear if the limit is reached.
+
+### View Comparison
+- Once two or more products are added, the comparison section will appear below the product list.
+- Scroll to the comparison view automatically when adding the second product.
+- Differences in attributes (e.g., price, features) are highlighted.
+
+### Remove Products
+- Click the "Remove" button (trash icon) next to a product in the comparison view to remove it from the list.
+
+### Search Products
+- Use the search bar at the top to filter products by name or brand.
+
+### Toggle Theme
+- Switch between dark and light modes using the toggle switch above the product list.
+
+### Persistence
+- The comparison list persists across page refreshes thanks to local storage. Add products, refresh the page, and they will remain in the comparison list.
+
