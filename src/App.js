@@ -16,11 +16,64 @@ import products from './data/products';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+const STORAGE_KEYS = {
+  COMPARE_LIST: 'compareList',
+  DARK_MODE: 'darkMode',
+};
+
 function App() {
   const [compareList, setCompareList] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [darkMode, setDarkMode] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   const compareRef = useRef(null);
+
+  // Load data from localStorage on initial render
+  useEffect(() => {
+    const savedCompareList = localStorage.getItem(STORAGE_KEYS.COMPARE_LIST);
+    const savedDarkMode = localStorage.getItem(STORAGE_KEYS.DARK_MODE);
+
+    if (savedCompareList) {
+      try {
+        const parsedList = JSON.parse(savedCompareList);
+        setCompareList(parsedList);
+
+        // If we have 2+ items, we'll need to scroll after the initial render
+        if (parsedList.length >= 2) {
+          setTimeout(() => {
+            if (compareRef.current) {
+              compareRef.current.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 300);
+        }
+      } catch (error) {
+        console.error('Failed to parse compare list from localStorage', error);
+      }
+    }
+
+    if (savedDarkMode) {
+      setDarkMode(savedDarkMode === 'true');
+    }
+
+    setIsInitialLoad(false);
+  }, []);
+
+  // Save compareList to localStorage whenever it changes
+  useEffect(() => {
+    if (!isInitialLoad) {
+      localStorage.setItem(
+        STORAGE_KEYS.COMPARE_LIST,
+        JSON.stringify(compareList)
+      );
+    }
+  }, [compareList, isInitialLoad]);
+
+  // Save darkMode to localStorage whenever it changes
+  useEffect(() => {
+    if (!isInitialLoad) {
+      localStorage.setItem(STORAGE_KEYS.DARK_MODE, darkMode.toString());
+    }
+  }, [darkMode, isInitialLoad]);
 
   const handleCompareToggle = (product) => {
     const exists = compareList.some((p) => p.id === product.id);
