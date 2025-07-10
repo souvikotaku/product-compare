@@ -22,27 +22,6 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   const compareRef = useRef(null);
 
-  // Load from localStorage on mount
-  useEffect(() => {
-    const stored = localStorage.getItem('compareList');
-    if (stored) {
-      try {
-        const storedIds = JSON.parse(stored).map((item) => item.id);
-        const restoredProducts = products.filter((p) =>
-          storedIds.includes(p.id)
-        );
-        setCompareList(restoredProducts);
-      } catch (e) {
-        console.error('Error parsing localStorage data:', e);
-      }
-    }
-  }, []);
-
-  // Save to localStorage on update
-  useEffect(() => {
-    localStorage.setItem('compareList', JSON.stringify(compareList));
-  }, [compareList]);
-
   const handleCompareToggle = (product) => {
     const exists = compareList.some((p) => p.id === product.id);
 
