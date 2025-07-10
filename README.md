@@ -51,3 +51,10 @@ Ensure you have Node.js installed on your system.
 ### Persistence
 - The comparison list persists across page refreshes thanks to local storage. Add products, refresh the page, and they will remain in the comparison list.
 
+## Usage
+
+- React
+
+- Material-UI (MUI) for components
+
+- React Toastify for notifications
