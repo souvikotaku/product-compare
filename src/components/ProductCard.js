@@ -13,6 +13,7 @@ const ProductCard = ({ product, isSelected, handleCompareToggle }) => {
     <Card
       sx={{
         maxWidth: 300,
+        width: '100%',
         border: isSelected ? '2px solid #1976d2' : 'none',
       }}
     >
