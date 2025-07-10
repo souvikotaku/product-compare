@@ -20,7 +20,7 @@ Ensure you have Node.js installed on your system.
 1. **Clone the Repository**
    ```bash
    git clone <repository-url>
-   cd product-compare-app
+   cd product-compare
 
 2. **Install Dependencies. Ensure you have Node.js installed. Then run:**
    ```bash
