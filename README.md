@@ -22,6 +22,15 @@ Ensure you have Node.js installed on your system.
    git clone <repository-url>
    cd product-compare-app
 
+2. **Install Dependencies. Ensure you have Node.js installed. Then run:**
+   ```bash
+   npm install
+
+3. **Run the Application. Start the development server with:**
+   ```bash
+   npm start
+Open http://localhost:3000 in your browser to view the app.
+
 ## Usage
 
 ### Launch the App
@@ -51,7 +60,7 @@ Ensure you have Node.js installed on your system.
 ### Persistence
 - The comparison list persists across page refreshes thanks to local storage. Add products, refresh the page, and they will remain in the comparison list.
 
-## Usage
+## Dependencies
 
 - React
 
